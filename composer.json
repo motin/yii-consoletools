@@ -1,5 +1,5 @@
 {
-    "name": "crisu83/yii-consoletools",
+    "name": "motin/yii-consoletools",
     "description": "A collection of tools for developing console commands for Yii.",
     "keywords": ["yii", "console", "tools"],
     "type": "library",
