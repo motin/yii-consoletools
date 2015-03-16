@@ -38,6 +38,10 @@ class MysqldumpCommand extends ProcessCommand
      */
     public $data = true;
     /**
+     * @var bool include routines (triggers, routines and stored procedures) in the dump.
+     */
+    public $routines = false;
+    /**
      * @var bool format data in a compact way (set false for more verbose insert statements).
      */
     public $compact = true;
@@ -110,10 +114,15 @@ class MysqldumpCommand extends ProcessCommand
 
         if (!$this->schema || $this->schema === "false") {
             $this->options["no-create-info"] = null;
-            $this->options["skip-triggers"] = null;
         }
         if (!$this->data || $this->data === "false") {
             $this->options["no-data"] = null;
+        }
+        if (!$this->routines || $this->routines === "false") {
+            $this->options["skip-triggers"] = null;
+        } else {
+            $this->options["triggers"] = null;
+            $this->options["routines"] = null;
         }
         if (!$this->compact || $this->compact === "false") {
             $this->options["skip-extended-insert"] = null;
