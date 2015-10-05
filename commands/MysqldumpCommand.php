@@ -58,40 +58,10 @@ class MysqldumpCommand extends ProcessCommand
     public function initDbOptions()
     {
         $db = $this->getDb();
-        if (!isset($this->options['user'])) {
-            $this->options['user'] = $db->username;
-        }
-        if (!isset($this->options['password'])) {
-            $this->options['password'] = $db->password;
-        }
-        $parsed = $this->parseConnectionString($db->connectionString);
-        if (!isset($this->options['host'])) {
-            $this->options['host'] = $parsed['hostName'];
-        }
-        if (!isset($this->options['port']) && isset($parsed['port'])) {
-            $this->options['port'] = $parsed['port'];
-        }
-    }
-
-    /**
-     * Reversing $this->connectionString = $this->driverName.':host='.$this->hostName.';dbname='.$this->dbName;
-     * Ugly but will have to do in short of better options (http://www.yiiframework.com/forum/index.php/topic/7984-where-to-get-the-name-of-the-database/)
-     * @param $connectionString
-     */
-    protected function parseConnectionString($connectionString)
-    {
-        $parsed = array();
-        $_ = explode(":", $connectionString, 2);
-        $parsed["driverName"] = $_[0];
-        $__ = explode(";", $_[1]);
-        foreach ($__ as $v) {
-            $___ = explode("=", $v);
-            $parsed[$___[0]] = $___[1];
-        }
-        // For staying true to the original variable names
-        $parsed["hostName"] = $parsed["host"];
-        $parsed["dbName"] = $parsed["dbname"];
-        return $parsed;
+        $this->options['user'] = DATABASE_USER;
+        $this->options['password'] = DATABASE_PASSWORD;
+        $this->options['host'] = DATABASE_HOST;
+        $this->options['port'] = DATABASE_PORT;
     }
 
     /**

@@ -1,4 +1,4 @@
 yii-consoletools
 ================
 
-A collection of tools for developing console commands for Yii.
+This fork contains the small part of Niska's yii-consoletools that is used in [DNA Project Base](https://github.com/neam/dna-project-base)

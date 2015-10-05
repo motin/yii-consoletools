@@ -9,13 +9,15 @@
             "name": "Christoffer Niska",
             "email": "christoffer.niska@gmail.com",
             "homepage": "http://www.cniska.net/"
+        },
+        {
+            "name": "Fredrik Wollsén",
+            "email": "fredrik@neam.se"
         }
     ],
     "autoload": {
         "classmap": [
-            "behaviors/",
-            "commands/",
-            "helpers/"
+            "commands/"
         ]
     }
 }
